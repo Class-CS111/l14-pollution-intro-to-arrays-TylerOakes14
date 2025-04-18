@@ -1,6 +1,6 @@
-// YOUR NAME:
+// YOUR NAME:Tyler Oakes
 // COLLABORATORS:
-// LAST MODIFIED DATE: 
+// LAST MODIFIED DATE: 4/14/25
 /*
 Yearly Global Atmospheric CO₂ Levels (parts per million)
 2001: 371.32 ppm
@@ -32,9 +32,39 @@ class Main
 
   public static void main(String[] args) 
   {
-		// DECLARATION SECTION
+		// DECLARATION SECTION & INITIALIZATION SECTION
 
-		// INITIALIZATION SECTION
+    int size = 20;
+    double[] co2Levels = new double[size];
+    int[] years = new int[size];
+
+    co2Levels[0] = 371.32; //2001
+    co2Levels[1] = 373.45; //2002
+    co2Levels[2] = 375.98; //2003
+    co2Levels[3] = 377.70; //2004
+    co2Levels[4] = 379.98; //2005
+    co2Levels[5] = 382.09; //2006
+    co2Levels[6] = 384.03; //2007
+    co2Levels[7] = 385.83; //2008
+    co2Levels[8] = 387.64; //2009
+    co2Levels[9] = 390.10; //2010
+    co2Levels[10] = 391.85; //2011
+    co2Levels[11] = 394.06; //2012
+    co2Levels[12] = 396.74; //2013
+    co2Levels[13] = 398.87; //2014
+    co2Levels[14] = 401.01; //2015
+    co2Levels[15] = 404.41; //2016
+    co2Levels[16] = 406.76; //2017
+    co2Levels[17] = 408.72; //2018
+    co2Levels[18] = 411.66; //2019
+    co2Levels[19] = 414.24; //2020
+
+    int currentYear = 2001;
+    for(int i = 0; i < years.length; i++)
+    {
+      years[i] = currentYear;
+      currentYear++;
+    }
 
 		// INPUT SECTION 
 
@@ -49,6 +79,37 @@ class Main
     System.out.print("Year");
     UtilityBelt.printCentered(55,"CO₂ in Atmosphere (ppm)");
 
+   Main.printGraph(co2Levels, years);
+   
+    double averageLevels = co2Levels[co2Levels.length -1] - co2Levels[0];
+    System.out.printf("From 2001 to 2020, the average atmospheric CO2 levels across the globe has grown %.2f ppm.%n", averageLevels);
+  
+  }
+
+  public static void printGraph(double[] dataValues, int[] yearValues)
+  {
+    for(int i = 0; i < dataValues.length; i++)
+    {
+      System.out.print(yearValues[i] + " ");
+      Main.printBar(dataValues[i]);
+    }
+  }
+  
+  /**
+   * Prints a single horizontal bar with one emoji for every whole number over
+   360 and displays the actual value to the right of the bar
+   *
+   * @param data the CO2 level for a year to draw as a bar graph, MUST be >= 360.
+   */
+
+  public static void printBar(double data) 
+  {
+    int numDrums = (int)(data - 360);
+    for(int i = 0; i < numDrums; i++)
+    {
+      System.out.print("🛢");
+    }
+    System.out.printf( " %.2f%n", + data);
   }
 
 }
